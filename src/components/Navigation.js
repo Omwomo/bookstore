@@ -5,7 +5,7 @@ export default function Navigation() {
   return (
     <nav className="navbar">
       <div className="logo">
-        Math Magicians
+        BOOK STORE
       </div>
       <ul className="nav-links">
         <li><Link to="/">BOOKS</Link></li>

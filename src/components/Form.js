@@ -10,6 +10,7 @@ export default function Form() {
         <option value="daniel">Daniel Goleman</option>
         <option value="niccolo">Niccolo Machievelli</option>
       </select>
+      <button type="submit">ADD BOOK</button>
     </form>
   );
 }
