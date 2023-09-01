@@ -6,7 +6,7 @@ export default function BookList() {
     { title: 'Mastery', author: 'Robert Green', id: 0 },
     { title: 'Laws of Nature', author: 'Jordan Peterson', id: 1 },
     { title: 'Emotional Intelligence', author: 'Daniel Goleman', id: 2 },
-    { title: 'Ratinal Male', author: 'Rollo Tomasi', id: 3 },
+    { title: 'Rational Male', author: 'Rollo Tomasi', id: 3 },
   ];
 
   return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from './Form';
 
 export default function Book(props) {
   const { title, author } = props;
@@ -17,7 +16,6 @@ export default function Book(props) {
         </li>
         <button type="button" className="remove-book">REMOVE BOOK</button>
       </ul>
-      <Form />
     </>
   );
 }
