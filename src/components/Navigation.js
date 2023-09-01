@@ -9,7 +9,7 @@ export default function Navigation() {
       </div>
       <ul className="nav-links">
         <li><Link to="/">BOOKS</Link></li>
-        <li><Link to="/categories">CATEGORIES</Link></li>
+        <li><Link to="/category">CATEGORIES</Link></li>
       </ul>
     </nav>
   );
