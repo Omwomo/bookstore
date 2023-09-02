@@ -1,5 +1,6 @@
 import React from 'react';
 import Book from './Book';
+import Form from './Form';
 
 export default function BookList() {
   const books = [
@@ -16,6 +17,7 @@ export default function BookList() {
           <Book title={book.title} author={book.author} key={book.id} />
         ))}
       </ul>
+      <Form />
     </div>
   );
 }

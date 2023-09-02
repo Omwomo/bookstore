@@ -101,7 +101,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd eugo
-  git clone https://github.com/Omwomo/Leaderboard-project-APIs.git
+  git clone https://github.com/Omwomo/bookstore.git
 ```
 
 
@@ -153,7 +153,7 @@ To run tests, run the following command:
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] **[Add more styling and animations to the page]
+- Add more styling and animations to the page
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

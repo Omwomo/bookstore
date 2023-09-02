@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Category from './components/Category';
 import BookList from './components/BookList';
-import Form from './components/Form';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path="/Category" element={<Category />} />
         </Routes>
       </div>
-      <Form />
     </Router>
   );
 }
