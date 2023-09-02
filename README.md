@@ -39,7 +39,6 @@
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Tech stack included in this project.
 
 <details>
   <summary>Client</summary>
@@ -66,7 +65,6 @@
 
 ### Key Features <a name="key-features"></a>
 
-> Description of the project key features.
 
 - **The project is build using React framework.**
 - **The project uses gitflow**
@@ -77,14 +75,11 @@
 ## 🚀 Live Demo N/A
 
 
-- [Live Demo Link](#)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Here's is how a developer could make use this project.
 
 To get a local copy up and running, follow these steps.
 
@@ -144,7 +139,6 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-> All the project authors.
 
 👤 **Author**
 
@@ -158,9 +152,8 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Description of future features that will be added to the project.
 
-- [ ] **[Add more styling and animations to te page]
+- [ ] **[Add more styling and animations to the page]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,7 +169,6 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> A message for users to support my project.
 
 If you like this project you greately encouraged contribute to it since it's an open source project.
 
@@ -185,7 +177,6 @@ If you like this project you greately encouraged contribute to it since it's an 
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Credit to people who inspired my codebase.
 
 I would like to thank the Microverse team for the detailed guidance on this project. And my coding partners for their immense support.
 
