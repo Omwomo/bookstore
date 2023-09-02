@@ -32,7 +32,6 @@
 
 # 📖 [Book Store] <a name="about-project"></a>
 
-> Project description.
 
 **[Book Store]** This project is build using React framework.
 
@@ -77,7 +76,6 @@
 
 ## 🚀 Live Demo N/A
 
-> The link to the deployed project.
 
 - [Live Demo Link](#)
 
