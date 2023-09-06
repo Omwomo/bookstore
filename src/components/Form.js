@@ -9,12 +9,16 @@ export default function Form() {
 
   const handleAddBook = () => {
     const newBook = {
-      id: 'item4',
-      title: 'Emotional Intelligence',
-      author: 'Daniel Goleman',
+      id: `item${Math.floor(Math.random() * 1000)}`,
+      title,
+      author,
       category: 'Self-help',
     };
+
     dispatch(addBook(newBook));
+
+    setTitle('');
+    setAuthor('');
   };
 
   return (
