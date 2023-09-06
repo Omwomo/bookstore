@@ -1,4 +1,3 @@
-// /src/redux/books/bookSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -13,6 +12,12 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 // Async thunk for adding books
 export const addBookAsync = createAsyncThunk('books/addBook', async (newBook) => {
   await axios.post(`${baseURL}/apps/abc123/books`, newBook);
+});
+
+// Async thunk for removing a book
+export const removeBookAsync = createAsyncThunk('books/removeBook', async (bookId) => {
+  await axios.delete(`${baseURL}/apps/abc123/books/${bookId}`);
+  return bookId;
 });
 
 const initialState = {
