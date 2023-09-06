@@ -10,6 +10,11 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   return response.data;
 });
 
+// Async thunk for adding books
+export const addBookAsync = createAsyncThunk('books/addBook', async (newBook) => {
+  await axios.post(`${baseURL}/apps/abc123/books`, newBook);
+});
+
 const initialState = {
   books: [
     {
