@@ -9,6 +9,7 @@ export default function Form() {
 
   const handleAddBook = () => {
     const newBook = {
+      id: `item${Math.floor(Math.random() * 1000)}`,
       title,
       author,
       category: 'Self-help',
