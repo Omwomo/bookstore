@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBookAsync } from '../redux/books/bookSlice';
+import { addBookAsync, fetchBooks } from '../redux/books/bookSlice';
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -19,6 +19,8 @@ export default function Form() {
 
     setTitle('');
     setAuthor('');
+
+    dispatch(fetchBooks());
   };
 
   return (

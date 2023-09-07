@@ -1,14 +1,12 @@
-// In your BookList.js file
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import Form from './Form';
-import { fetchBooks, removeBookAsync } from '../redux/books/bookSlice';
+import { fetchBooks, removeBook, removeBookAsync } from '../redux/books/bookSlice';
 
 export default function BookList() {
-  const booksById = useSelector((state) => state.books.books);
-  const books = Object.values(booksById).flat(); // Flatten the array of arrays
+  const booksById = useSelector((state) => state.books.booksById);
+  const books = Object.values(booksById).map((arr) => arr[0]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,27 +15,20 @@ export default function BookList() {
 
   const handleRemoveBook = (id) => {
     dispatch(removeBookAsync(id));
+    dispatch(removeBook(id));
   };
-
-  /* if (books.length === 0) {
-    return (
-      <>
-        <div>Loading... </div>
-        <Form />
-      </>
-    );
-  } */
 
   return (
     <div className="book-lists">
       <ul className="books">
-        { books.map((book) => (
+        {books.map((book) => (
           <Book
             title={book.title}
             author={book.author}
             category={book.category}
             key={book.item_id}
             onRemove={() => handleRemoveBook(book.item_id)}
+            item_id={book.item_id}
           />
         ))}
       </ul>

@@ -8,7 +8,6 @@ const newAppId = 'PCjI6tTi8uL0vQkTGQFc';
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAPI) => {
   try {
     const response = await axios.get(`${baseURL}/apps/${newAppId}/books`);
-    console.log('API response:', response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -19,7 +18,7 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAP
 export const addBookAsync = createAsyncThunk('books/addBook', async (newBook, thunkAPI) => {
   try {
     await axios.post(`${baseURL}/apps/${newAppId}/books`, newBook);
-    return newBook;
+    return newBook.id;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -37,7 +36,7 @@ export const removeBookAsync = createAsyncThunk('books/removeBook', async (bookI
 
 const initialState = {
   isLoading: false,
-  books: [],
+  booksById: {},
 };
 
 const bookSlice = createSlice({
@@ -48,19 +47,23 @@ const bookSlice = createSlice({
       state.books = [...state.books, action.payload];
     },
     removeBook: (state, action) => {
-      state.books = state.books.filter((book) => book.id !== action.payload);
+      const bookId = action.payload;
+      delete state.booksById[bookId];
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBooks.fulfilled, (state, action) => {
-        state.books = action.payload;
+        state.booksById = action.payload;
       })
       .addCase(addBookAsync.fulfilled, (state, action) => {
-        state.books = [...state.books, action.payload];
+        const newBook = action.payload;
+        const itemId = Object.keys(newBook)[0]; // Get the unique identifier
+        state.booksById[itemId] = newBook[itemId]; // Update state
       })
       .addCase(removeBookAsync.fulfilled, (state, action) => {
-        state.books = state.books.filter((book) => book.id !== action.payload);
+        const bookId = action.payload;
+        delete state.booksById[bookId];
       });
   },
 });
