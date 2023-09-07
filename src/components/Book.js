@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Book(props) {
-  const { title, author, onRemove } = props;
+  const {
+    title, author, category, onRemove,
+  } = props;
 
   return (
     <>
@@ -15,6 +17,10 @@ export default function Book(props) {
           Author:
           {author}
         </li>
+        <li className="book-category">
+          Category:
+          {category}
+        </li>
         <button type="button" className="remove-book" onClick={onRemove}>REMOVE BOOK</button>
       </ul>
     </>
@@ -24,5 +30,6 @@ export default function Book(props) {
 Book.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   onRemove: PropTypes.func.isRequired,
 };

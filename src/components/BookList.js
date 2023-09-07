@@ -7,7 +7,8 @@ import Form from './Form';
 import { fetchBooks, removeBookAsync } from '../redux/books/bookSlice';
 
 export default function BookList() {
-  const books = useSelector((state) => state.books.books);
+  const booksById = useSelector((state) => state.books.books);
+  const books = Object.values(booksById).flat(); // Flatten the array of arrays
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,14 +19,14 @@ export default function BookList() {
     dispatch(removeBookAsync(id));
   };
 
-  if (books.length === 0) {
+  /* if (books.length === 0) {
     return (
       <>
         <div>Loading... </div>
         <Form />
       </>
     );
-  }
+  } */
 
   return (
     <div className="book-lists">
@@ -34,8 +35,9 @@ export default function BookList() {
           <Book
             title={book.title}
             author={book.author}
-            key={book.id}
-            onRemove={() => handleRemoveBook(book.id)}
+            category={book.category}
+            key={book.item_id}
+            onRemove={() => handleRemoveBook(book.item_id)}
           />
         ))}
       </ul>

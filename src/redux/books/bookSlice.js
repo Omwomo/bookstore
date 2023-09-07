@@ -8,7 +8,7 @@ const newAppId = 'PCjI6tTi8uL0vQkTGQFc';
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAPI) => {
   try {
     const response = await axios.get(`${baseURL}/apps/${newAppId}/books`);
-    // console.log('API response:', response.data);
+    console.log('API response:', response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -36,6 +36,7 @@ export const removeBookAsync = createAsyncThunk('books/removeBook', async (bookI
 });
 
 const initialState = {
+  isLoading: false,
   books: [],
 };
 
