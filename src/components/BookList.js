@@ -1,16 +1,31 @@
-import React from 'react';
+// In your BookList.js file
+
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import Form from './Form';
-import { removeBook } from '../redux/books/bookSlice';
+import { fetchBooks, removeBookAsync } from '../redux/books/bookSlice';
 
 export default function BookList() {
   const books = useSelector((state) => state.books.books);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
   const handleRemoveBook = (id) => {
-    dispatch(removeBook(id));
+    dispatch(removeBookAsync(id));
   };
+
+  if (books.length === 0) {
+    return (
+      <>
+        <div>Loading... </div>
+        <Form />
+      </>
+    );
+  }
 
   return (
     <div className="book-lists">

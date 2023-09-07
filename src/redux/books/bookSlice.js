@@ -2,22 +2,37 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+const newAppId = 'PCjI6tTi8uL0vQkTGQFc';
 
 // Async thunk for fetching book
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  const response = await axios.get(`${baseURL}/apps/abc123/books`);
-  return response.data;
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get(`${baseURL}/apps/${newAppId}/books`);
+    // console.log('API response:', response.data);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 // Async thunk for adding books
-export const addBookAsync = createAsyncThunk('books/addBook', async (newBook) => {
-  await axios.post(`${baseURL}/apps/abc123/books`, newBook);
+export const addBookAsync = createAsyncThunk('books/addBook', async (newBook, thunkAPI) => {
+  try {
+    await axios.post(`${baseURL}/apps/${newAppId}/books`, newBook);
+    return newBook;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 // Async thunk for removing a book
-export const removeBookAsync = createAsyncThunk('books/removeBook', async (bookId) => {
-  await axios.delete(`${baseURL}/apps/abc123/books/${bookId}`);
-  return bookId;
+export const removeBookAsync = createAsyncThunk('books/removeBook', async (bookId, thunkAPI) => {
+  try {
+    await axios.delete(`${baseURL}/apps/${newAppId}/books/${bookId}`);
+    return bookId;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 const initialState = {
@@ -53,6 +68,18 @@ const bookSlice = createSlice({
     removeBook: (state, action) => {
       state.books = state.books.filter((book) => book.id !== action.payload);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.books = action.payload;
+      })
+      .addCase(addBookAsync.fulfilled, (state, action) => {
+        state.books = [...state.books, action.payload];
+      })
+      .addCase(removeBookAsync.fulfilled, (state, action) => {
+        state.books = state.books.filter((book) => book.id !== action.payload);
+      });
   },
 });
 
