@@ -13,20 +13,17 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
 
@@ -68,12 +65,6 @@
 
 - **The project is build using React framework.**
 - **The project uses gitflow**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## 🚀 Live Demo N/A
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

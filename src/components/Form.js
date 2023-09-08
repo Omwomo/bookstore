@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/bookSlice';
+import { addBookAsync, fetchBooks } from '../redux/books/bookSlice';
+
+const generateUniqueID = () => {
+  const timestamp = new Date().getTime();
+  const randomNumber = Math.floor(Math.random() * 1000);
+  return `${timestamp},${randomNumber}`;
+};
 
 export default function Form() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const handleAddBook = () => {
+  const handleAddBook = async () => {
     const newBook = {
-      id: `item${Math.floor(Math.random() * 1000)}`,
+      item_id: generateUniqueID(),
       title,
       author,
       category: 'Self-help',
     };
 
-    dispatch(addBook(newBook));
+    await dispatch(addBookAsync(newBook));
 
     setTitle('');
     setAuthor('');
+
+    dispatch(fetchBooks());
   };
 
   return (
@@ -30,17 +38,14 @@ export default function Form() {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <select
+      <input
+        type="text"
+        placeholder="Author"
         className="author"
         name="author"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
-      >
-        <option value="robert-green">Robert Greene</option>
-        <option value="jordan">Jordan Peterson</option>
-        <option value="daniel">Daniel Goleman</option>
-        <option value="niccolo">Niccolo Machievelli</option>
-      </select>
+      />
       <button type="button" onClick={handleAddBook}>ADD BOOK</button>
     </form>
   );
