@@ -2,13 +2,20 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
-const newAppId = 'PCjI6tTi8uL0vQkTGQFc';
+const newAppId = '8hRxdA2IX11EQZ7NF3Bf';
 
-// Async thunk for fetching book
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAPI) => {
   try {
     const response = await axios.get(`${baseURL}/apps/${newAppId}/books`);
-    return response.data;
+    const booksWithItemId = Object.keys(response.data).reduce((acc, key) => {
+      const itemId = key;
+      const book = response.data[key][0];
+      return {
+        ...acc,
+        [itemId]: { ...book, itemId },
+      };
+    }, {});
+    return booksWithItemId;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -17,8 +24,8 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async (_, thunkAP
 // Async thunk for adding books
 export const addBookAsync = createAsyncThunk('books/addBook', async (newBook, thunkAPI) => {
   try {
-    await axios.post(`${baseURL}/apps/${newAppId}/books`, newBook);
-    return newBook.id;
+    const response = await axios.post(`${baseURL}/apps/${newAppId}/books`, newBook);
+    return response.data[0];
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -58,8 +65,7 @@ const bookSlice = createSlice({
       })
       .addCase(addBookAsync.fulfilled, (state, action) => {
         const newBook = action.payload;
-        const itemId = Object.keys(newBook)[0]; // Get the unique identifier
-        state.booksById[itemId] = newBook[itemId]; // Update state
+        state.booksById[newBook.itemId] = [newBook];
       })
       .addCase(removeBookAsync.fulfilled, (state, action) => {
         const bookId = action.payload;
