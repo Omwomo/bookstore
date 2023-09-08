@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { addBookAsync, fetchBooks } from '../redux/books/bookSlice';
 
 const generateUniqueID = () => {
-  const timestamp = new Date().getTime(); // Current timestamp
-  const randomNumber = Math.floor(Math.random() * 1000); // Random number between 0 and 999
+  const timestamp = new Date().getTime();
+  const randomNumber = Math.floor(Math.random() * 1000);
   return `${timestamp},${randomNumber}`;
 };
 
@@ -13,7 +13,7 @@ export default function Form() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const handleAddBook = () => {
+  const handleAddBook = async () => { // Make the function asynchronous
     const newBook = {
       item_id: generateUniqueID(),
       title,
@@ -21,7 +21,7 @@ export default function Form() {
       category: 'Self-help',
     };
 
-    dispatch(addBookAsync(newBook));
+    await dispatch(addBookAsync(newBook)); // Wait for addBookAsync to complete
 
     setTitle('');
     setAuthor('');
