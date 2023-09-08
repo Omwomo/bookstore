@@ -13,7 +13,7 @@ export default function Form() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const handleAddBook = async () => { // Make the function asynchronous
+  const handleAddBook = async () => {
     const newBook = {
       item_id: generateUniqueID(),
       title,
@@ -21,7 +21,7 @@ export default function Form() {
       category: 'Self-help',
     };
 
-    await dispatch(addBookAsync(newBook)); // Wait for addBookAsync to complete
+    await dispatch(addBookAsync(newBook));
 
     setTitle('');
     setAuthor('');
