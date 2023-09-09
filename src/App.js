@@ -7,13 +7,14 @@ import BookList from './components/BookList';
 function App() {
   return (
     <Router>
-      <Navigation />
-      <div className="App">
-        <h1>Hello bookstore</h1>
-        <Routes>
-          <Route path="/" element={<BookList />} />
-          <Route path="/Category" element={<Category />} />
-        </Routes>
+      <div className="container">
+        <Navigation />
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<BookList />} />
+            <Route path="/Category" element={<Category />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

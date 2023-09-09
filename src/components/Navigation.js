@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import avatar from './avatar.svg';
 
 export default function Navigation() {
   return (
@@ -11,6 +12,9 @@ export default function Navigation() {
         <li><Link to="/">BOOKS</Link></li>
         <li><Link to="/category">CATEGORIES</Link></li>
       </ul>
+      <div className="avatar">
+        <img src={avatar} alt="Avatar" />
+      </div>
     </nav>
   );
 }
