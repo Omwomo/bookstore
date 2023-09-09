@@ -25,7 +25,7 @@
   padding-left: 10%;
   padding-right: 10%;
   background-color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   font-family: Montserrat, sans-serif;
 }
 
@@ -59,7 +59,6 @@
   padding: 0.875rem;
   border: solid 1px #e8e8e8;
   border-radius: 50%;
-
 }
 
 .avatar {
@@ -135,6 +134,8 @@
   color: #4386bf;
   white-space: nowrap;
   cursor: pointer;
+  border: none;
+  background-color: #fff;
 }
 
 .percent {
@@ -208,11 +209,6 @@
   border: solid 1px #e8e8e8;
   display: flex;
   align-items: center;
-}
-
-.button {
-  border: none;
-  background-color: #fff;
 }
 
 .progress {
